@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "forlorn-stroopwafel",
+    "name": "d-dice",
     "slug": "snack-98bb0f5e-5076-4871-8ffa-259167ac47fe",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/CreativePenguin/d-dice"
   }
 }
