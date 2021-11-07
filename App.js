@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Button,
@@ -15,23 +15,38 @@ import Constants from 'expo-constants';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 
-export default function App() {
+const App = () => {
+  const [diceVal, setDiceVal] = useState(0);
+  let diceString = 0;
+  if(diceVal > 0) {
+    diceString = diceVal.toString
+  }
+  
   return (
     <View style={styles.container}>
       <Text style={styles.dice}>
         6-D
-        
-        <Pressable style={styles.button} onPress={Alert.alert(getRandomInt(6))}>
-      <Text style={styles.text}>{'Left'}</Text>
-    </Pressable>
-        
-        
+        <Pressable 
+          style={styles.button}
+          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 6))}
+          // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
+        >
+          <Text style={styles.text}>{'d6'}</Text>
+        </Pressable>
+
         <Button
           title="Right button"
           onPress={() => Alert.alert(getRandomInt(6))}
         />
-        
+
+        <Button
+          title="d12"
+          onClick={() => setDiceVal(() => Math.ceil(Math.random() * 12))}
+        />
       </Text>
+      <View style={styles.container}>
+        <Text style={styles.text}>{diceString}</Text>
+      </View>
     </View>
   );
 }
@@ -62,7 +77,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
+    color: 'black',
   },
   dice: {
     marginTop: 30,
@@ -73,3 +88,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default App;

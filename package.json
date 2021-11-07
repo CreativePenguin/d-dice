@@ -1,4 +1,6 @@
 {
+  "name": "d-dice",
+  "version": "0.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -6,6 +8,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
+  },
+  "jest": {
+    "preset": "jest-expo"
   },
   "dependencies": {
     "expo": "~43.0.0",
