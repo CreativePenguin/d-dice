@@ -1,5 +1,5 @@
 # d-dice
-hackathon 2021
+UB Hacking 2021 -- https://www.ubhacking.com/
 
 ## Goal
 Basically this: https://justflipacoin.com/, but for dice
@@ -9,5 +9,9 @@ Basically this: https://justflipacoin.com/, but for dice
 - [ ] The dice look animated and spin or whatever before displaying number
 - [ ] Add sfx
 
-## Setup
-This project uses React Native
+## Setup/Build
+This project uses React Native, so it should be multiplatform (probably)  
+Follow these instructions to download react native: 
+https://reactnative.dev/docs/environment-setup  
+If it's set up properly, you should be able to type `$ expo start`, and then 
+select your testing environment
