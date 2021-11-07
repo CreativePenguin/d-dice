@@ -11,7 +11,7 @@ import {
 // You can import from local files
 
 // or any pure javascript modules available in npm
-import { Card } from 'react-native-paper';
+// import { Card } from 'react-native-paper';
 
 const App = () => {
   const [diceVal, setDiceVal] = useState('');
@@ -24,32 +24,45 @@ const App = () => {
   return (
     <View>
       <View style={styles.container}>
-      <Pressable 
-        onPress={() => setDiceVal(() => Math.ceil(Math.random() * 6))}
-        // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
-        // The `style=` is supposed to change the color of the button when pressed, but it doesn't work rn.
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? 'lightblue' : 'white'
-          },
-          styles.button
-        ]}>
-        {({ pressed }) => (
-          <Text style={styles.text}>{'d6'}</Text>
-        )}
-      </Pressable>
-      
-      <Button
-        title="Right button"
-        onPress={() => Alert.alert(getRandomInt(6))}
-        />
-      
-      <Button
-        title="d12"
-        onPress={() => setDiceVal(() => Math.ceil(Math.random() * 12))}
-        // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
-      />
+        <Pressable
+          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 4))}
+          style={styles.button}>
+            <Text style={styles.text}>{'d4'}</Text>
+          </Pressable>
+
+        <Pressable 
+          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 6))}
+          // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
+          // The `style=` is supposed to change the color of the button when pressed, but it doesn't work rn.
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? 'white' : 'light blue'
+            },
+            styles.button
+          ]}>
+            <Text style={styles.text}>{'d6'}</Text>
+          </Pressable>
+
+        <Pressable
+          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 8))}
+          style={styles.button}>
+            <Text style={styles.text}>{'d8'}</Text>
+          </Pressable>
+
+        <Pressable
+          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 12))}
+          // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
+          style={styles.button}>
+            <Text style={styles.text}>{'d12'}</Text>
+          </Pressable>
+
+          <Button
+            onPress={() => setDiceVal(() => Math.ceil(Math.random() * 100))}
+            title="d100"
+            />
       </View>
+
+      {/* <Separator />  Might want to consider using this: from https://reactnative.dev/docs/button*/} 
 
       <View style={styles.dicebox}>
         <Text style={styles.text}>{diceVal}</Text>
