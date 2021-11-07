@@ -3,7 +3,7 @@ UB Hacking 2021 -- https://www.ubhacking.com/
 
 ## Goal
 Basically this: https://justflipacoin.com/, but for dice
-- [ ] Clickable boxes that show random number
+- [X] Clickable boxes that show random number
 - [ ] Roll multiple die at once
 - [ ] Actual dice pictures show up instead of numbers
 - [ ] The dice look animated and spin or whatever before displaying number
