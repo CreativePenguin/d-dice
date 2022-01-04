@@ -7,14 +7,24 @@ import {
   Alert,
   Pressable
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 // You can import from local files
 
 // or any pure javascript modules available in npm
 // import { Card } from 'react-native-paper';
 
+function multiRandInt(dSize, numLoops) {
+  var dRolls = [];
+  for(let i = 0; i < numLoops; i++) {
+    dRolls.push(Math.ceil(Math.random() * dSize));
+  }
+  return dRolls;
+}
+
 const App = () => {
-  const [diceVal, setDiceVal] = useState('');
+  const [diceVal, setDiceVal] = useState([]);
+  const [numDice, onChangeNumDice] = useState(1);
   // let diceVal = 0;
   // let diceString = '0';
   // if(diceVal > 0) {
@@ -25,13 +35,13 @@ const App = () => {
     <View>
       <View style={styles.container}>
         <Pressable
-          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 4))}
+          onPress={() => setDiceVal(() => multiRandInt(4, numDice))}
           style={styles.button}>
             <Text style={styles.text}>{'d4'}</Text>
           </Pressable>
 
         <Pressable 
-          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 6))}
+          onPress={() => setDiceVal(() => multiRandInt(6, numDice))}
           // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
           // The `style=` is supposed to change the color of the button when pressed, but it doesn't work rn.
           style={({ pressed }) => [
@@ -44,20 +54,20 @@ const App = () => {
           </Pressable>
 
         <Pressable
-          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 8))}
+          onPress={() => setDiceVal(() => multiRandInt(8, numDice))}
           style={styles.button}>
             <Text style={styles.text}>{'d8'}</Text>
           </Pressable>
 
         <Pressable
-          onPress={() => setDiceVal(() => Math.ceil(Math.random() * 12))}
+          onPress={() => setDiceVal(() => multiRandInt(12, numDice))}
           // onPress={() => {diceVal = Math.ceil(Math.random() * 6)}}
           style={styles.button}>
             <Text style={styles.text}>{'d12'}</Text>
           </Pressable>
 
           <Button
-            onPress={() => setDiceVal(() => Math.ceil(Math.random() * 100))}
+            onPress={() => setDiceVal(() => multiRandInt(100, numDice))}
             title="d100"
             />
       </View>
@@ -65,7 +75,17 @@ const App = () => {
       {/* <Separator />  Might want to consider using this: from https://reactnative.dev/docs/button*/} 
 
       <View style={styles.dicebox}>
-        <Text style={styles.text}>{diceVal}</Text>
+        <TextInput
+          onChangeText={onChangeNumDice}
+          keyboardType='numeric'
+          placeholder='1'
+        />
+      </View>
+
+      <View style={styles.dicebox}>
+        <Text style={styles.text}>
+          {diceVal.filter((a, b) => a + b)}
+        </Text>
       </View>
     </View>
   );
